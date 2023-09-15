@@ -123,8 +123,6 @@ document.addEventListener("click", function (e) {
   document.querySelectorAll(".task p").forEach((el) => {
     if (el === e.target) {
       clickedElement = e.target;
-      console.log(clickedElement);
-      console.log(e.target);
     }
   });
 
@@ -154,7 +152,6 @@ document.addEventListener("click", function (e) {
 });
 
 function editingArrayData(el, done) {
-  console.log(el);
   allDataInTasks.forEach((element, i) => {
     if (el.children[0].textContent === element.title) {
       allDataInTasks[i].done = done;
