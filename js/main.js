@@ -49,7 +49,6 @@ form.onsubmit = function (e) {
     localStorage.setItem("tasks", JSON.stringify(allDataInTasks));
 
     inputField.value = "";
-    inputField.focus();
   }
 };
 
