@@ -77,7 +77,6 @@ function createTask(inputValue, done) {
 
 document.addEventListener("click", function (e) {
   if (e.target.className === "delete") {
-    let checkDeleted;
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this task",
@@ -120,25 +119,42 @@ document.addEventListener("click", function (e) {
       });
   }
 
-  if (e.target.classList.contains("task")) {
-    e.target.classList.toggle("done");
-    if (e.target.classList.contains("done")) {
+  let clickedElement = "";
+  document.querySelectorAll(".task p").forEach((el) => {
+    if (el === e.target) {
+      clickedElement = e.target;
+      console.log(clickedElement);
+      console.log(e.target);
+    }
+  });
+
+  if (e.target.classList.contains("task") || e.target === clickedElement) {
+    let ourtask = e.target;
+    document.querySelectorAll(".task p").forEach((el) => {
+      if (el === e.target) {
+        ourtask = e.target.parentNode;
+      }
+    });
+
+    ourtask.classList.toggle("done");
+    if (ourtask.classList.contains("done")) {
       tasksCompleted.innerHTML = +tasksCompleted.innerHTML + 1;
       tasksNotCompleted.innerHTML -= 1;
 
       document.querySelector(".success-sound").play();
 
-      editingArrayData(e.target, 1);
+      editingArrayData(ourtask, 1);
     } else {
       tasksNotCompleted.innerHTML = +tasksNotCompleted.innerHTML + 1;
       tasksCompleted.innerHTML -= 1;
 
-      editingArrayData(e.target, 0);
+      editingArrayData(ourtask, 0);
     }
   }
 });
 
 function editingArrayData(el, done) {
+  console.log(el);
   allDataInTasks.forEach((element, i) => {
     if (el.children[0].textContent === element.title) {
       allDataInTasks[i].done = done;
