@@ -106,7 +106,7 @@ form input:last-child:hover {
   width: fit-content;
   max-width: calc(100% - 55px);
   overflow: auto;
-  padding: 12 px 0;
+  padding: 10px 0;
 }
 
 .tasks .task .delete {
