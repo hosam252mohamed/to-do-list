@@ -61,6 +61,7 @@ function createTask(inputValue, done) {
   tasks.append(divTask);
 
   let ptext = document.createElement("p");
+  ptext.className = "task-title";
   ptext.appendChild(document.createTextNode(inputValue));
   divTask.appendChild(ptext);
 
@@ -75,7 +76,7 @@ function createTask(inputValue, done) {
   } else tasksNotCompleted.innerHTML = +tasksNotCompleted.innerHTML + 1;
 }
 
-document.addEventListener("click", function (e) {
+tasks.addEventListener("click", function (e) {
   if (e.target.className === "delete") {
     swal({
       title: "Are you sure?",
@@ -119,20 +120,12 @@ document.addEventListener("click", function (e) {
       });
   }
 
-  let clickedElement = "";
-  document.querySelectorAll(".task p").forEach((el) => {
-    if (el === e.target) {
-      clickedElement = e.target;
-    }
-  });
-
-  if (e.target.classList.contains("task") || e.target === clickedElement) {
-    let ourtask = e.target;
-    document.querySelectorAll(".task p").forEach((el) => {
-      if (el === e.target) {
-        ourtask = e.target.parentNode;
-      }
-    });
+  if (
+    e.target.classList.contains("task") ||
+    e.target.classList.contains("task-title")
+  ) {
+    let ourtask =
+      e.target.className === "task-title" ? e.target.parentNode : e.target;
 
     ourtask.classList.toggle("done");
     if (ourtask.classList.contains("done")) {

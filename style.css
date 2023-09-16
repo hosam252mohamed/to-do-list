@@ -101,12 +101,12 @@ form input:last-child:hover {
   text-decoration: line-through;
 }
 
-.tasks .task p {
+.tasks .task p.task-title {
   font-size: 18px;
   width: fit-content;
   max-width: calc(100% - 55px);
   overflow: auto;
-  padding: 12px 0;
+  padding: 12 px 0;
 }
 
 .tasks .task .delete {
