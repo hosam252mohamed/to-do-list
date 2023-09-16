@@ -93,7 +93,7 @@ form input:last-child:hover {
 .tasks .task {
   background-color: white;
   position: relative;
-  padding: 15px;
+  padding: 12px;
   border-radius: 8px;
   cursor: pointer;
 }
